@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../Styles/SideMenu/SideMenu.module.scss";
-import LogoRec from "../Styles/Images/logo-white-img.png";
+import pokeball from "../Styles/Images/pokeball.png";
 import { getAuth } from 'firebase/auth';
 import md5 from "md5";
 import { Link } from 'react-router-dom';
@@ -39,7 +39,7 @@ const SideMenu = () => {
             <div className={styles.sidemenu_body}>
                 {/* Header */}
                 <div className={styles.sidemenu_logo}>
-                    <Link to="/home"><img src={LogoRec} alt="logo" /></Link>
+                    <Link to="/home"><img src={pokeball} alt="logo" /></Link>
                 </div>
 
 
@@ -49,24 +49,22 @@ const SideMenu = () => {
                     <h1>{user.email}</h1>
                 </div>
 
+
                 {/* Items */}
                 <div className={styles.sidemenu_items}>
-                    <Link to="/blog">
-                        <i className="fa-solid fa-blog"></i>
-                        <span>Blog</span>
+                    <Link to="/search">
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <span>Busca tu pokemon favorito</span>
                     </Link>
 
-                    {admin
-                        ? <Link to="/blog/add">
-                            <i className="fa-solid fa-plus"></i>
-                            <span>Add blog post</span>
-                        </Link>
-                        : null
-                    }
+                    <Link to="/image-analyzer">
+                        <i className="fa-solid fa-plus"></i>
+                        <span>Agregar pokemon descubierto</span>
+                    </Link>
 
                     <Link to="/image-analyzer">
-                        <i className="fa-solid fa-image"></i>
-                        <span>Search recipe by image</span>
+                    <i className="fa-solid fa-address-book"></i>
+                        <span>Resgistro maestro pokemon</span>
                     </Link>
 
 

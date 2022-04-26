@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import SideMenu from '../Components/SideMenu';
-import PruebaAdmin from '../Components/PruebaAdmin';
+import PokeCards from '../Components/PokeCards';
+import ResultSearch from '../Components/ResultsSearch';
 
 const DashboardRoutes = () => {
 	return (
@@ -10,8 +11,9 @@ const DashboardRoutes = () => {
 			</div>
 			<div className='dash_routes'>
 				<Routes>
-					<Route path='/home' element={<PruebaAdmin />} />
+					<Route path='/home' element={<PokeCards />} />
 					<Route path='*' element={<Navigate to='/home' />} />
+					<Route path='/search' element={<ResultSearch />} />
 				</Routes>
 			</div>
 		</div>

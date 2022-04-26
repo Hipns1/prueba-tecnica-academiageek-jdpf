@@ -9,3 +9,7 @@ export const typesLogin ={
 export const typesRegister ={
     register: 'register'
 }
+
+export const typesPokemon ={
+    buscar: 'buscar',
+}
