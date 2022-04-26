@@ -1,12 +1,6 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
-import SideMenu from '../Components/SideMenu'
-import Dashboard from '../Components/Dashboard'
-import Blog from '../Components/Blog'
-import AddBlog from '../Components/AddBlog'
-import BlogSearch from '../Components/BlogSearch'
-import ResultsRecipes from '../Components/ResultsRecipes'
-import { AnalyzeImg } from '../Components/AnalyzeImg'
-import { DetailsRecipe } from '../Components/DetailsRecipe'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import SideMenu from '../Components/SideMenu';
+import PruebaAdmin from '../Components/PruebaAdmin';
 
 const DashboardRoutes = () => {
 	return (
@@ -16,13 +10,7 @@ const DashboardRoutes = () => {
 			</div>
 			<div className='dash_routes'>
 				<Routes>
-					<Route path='/home' element={<Dashboard />} />
-					<Route path='/image-analyzer' element={<AnalyzeImg />} />
-					<Route path='/results/:query' element={<ResultsRecipes />} />
-					<Route path='/details/:id' element={<DetailsRecipe />} />
-					<Route path='/blog' element={<Blog />} />
-					<Route path='/blog/add' element={<AddBlog />} />
-					<Route path='/blog/search/:search' element={<BlogSearch />} />
+					<Route path='/home' element={<PruebaAdmin />} />
 					<Route path='*' element={<Navigate to='/home' />} />
 				</Routes>
 			</div>

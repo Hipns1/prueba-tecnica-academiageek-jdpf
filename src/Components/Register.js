@@ -5,7 +5,9 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerAsync } from '../Redux/actions/actionRegister';
 import styles from "../Styles/Login_Register/Login.module.scss";
-import Logo from "../Styles/Images/logo-black.png";
+import { motion } from 'framer-motion';
+import pokelogo from "../Styles/Images/pokelogo.png";
+import mewto from "../Styles/Images/mewto.png";
 
 //validaciones de cada input
 const SignupSchema = Yup.object().shape({
@@ -38,95 +40,96 @@ const Register = () => {
     return (
         <div className={styles.login_container}>
 
-            <div className={styles.login_logo}>
-                <Link to="/"><img src={Logo} alt=""></img> </Link>
-            </div>
+            <motion.div
+                initial={{ x: -500, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className={styles.login_img}>
+                <img src={mewto} alt="mewto" />
+            </motion.div>
 
-            <div className={styles.login_form}>
-                <Formik
-                    initialValues={{
-                        nombre: "",
-                        email: "",
-                        password: "",
-                        pass2: "",
-                    }}
-                    validationSchema={SignupSchema}
-                    onSubmit={(values) => {
-                        handleSubmit(values)
-                    }}
-                >
-                    {({ errors, touched }) => (
-                        <Form>
-                            <div>
-                                <h1>Crear cuenta</h1>
-                            </div>
+            <motion.div
+                className={styles.login_container__form}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}>
+                <div className={styles.login_logo}>
+                    <Link to="/"><img src={pokelogo} alt=""></img> </Link>
+                </div>
 
-                            <div className={styles.login_form__inputs}>
-                                <label>Nombre</label>
-                                <Field name="nombre" type="text" />
-                                {errors.nombre && touched.nombre ? (
-                                    <div style={{ color: "red", fontSize: "13px" }}>
-                                        {errors.nombre}
-                                    </div>
-                                ) : null}
-                            </div>
+                <div className={styles.login_form}>
+                    <Formik
+                        initialValues={{
+                            nombre: "",
+                            email: "",
+                            password: "",
+                            pass2: "",
+                        }}
+                        validationSchema={SignupSchema}
+                        onSubmit={(values) => {
+                            handleSubmit(values)
+                        }}
+                    >
+                        {({ errors, touched }) => (
+                            <Form>
+                                <div>
+                                    <h1>Crear cuenta</h1>
+                                </div>
 
-                            <div className={styles.login_form__inputs}>
-                                <label>Email</label>
-                                <Field name="email" type="text" />
-                                {errors.email && touched.email ? (
-                                    <div style={{ color: "red", fontSize: "13px" }}>
-                                        {errors.email}
-                                    </div>
-                                ) : null}
-                            </div>
+                                <div className={styles.login_form__inputs}>
+                                    <label>Nombre</label>
+                                    <Field name="nombre" type="text" />
+                                    {errors.nombre && touched.nombre ? (
+                                        <div className={styles.login_error}>
+                                            {errors.nombre}
+                                        </div>
+                                    ) : null}
+                                </div>
 
-                            <div className={styles.login_form__inputs}>
-                                <label>Contraseña</label>
-                                <Field name="password" type="password" autoComplete="off" />
-                                {errors.password && touched.password ? (
-                                    <div style={{ color: "red", fontSize: "13px" }}>
-                                        {errors.password}
-                                    </div>
-                                ) : null}
-                            </div >
+                                <div className={styles.login_form__inputs}>
+                                    <label>Email</label>
+                                    <Field name="email" type="text" />
+                                    {errors.email && touched.email ? (
+                                        <div className={styles.login_error}>
+                                            {errors.email}
+                                        </div>
+                                    ) : null}
+                                </div>
 
-                            <div className={styles.login_form__inputs}>
-                                <label>Vuelva a escribir la contraseña</label>
-                                <Field name="pass2" type="password" autoComplete="off" />
-                                {errors.pass2 && touched.pass2 ? (
-                                    <div style={{ color: "red", fontSize: "13px" }}>
-                                        {errors.pass2}
-                                    </div>
-                                ) : null}
-                            </div>
+                                <div className={styles.login_form__inputs}>
+                                    <label>Contraseña</label>
+                                    <Field name="password" type="password" autoComplete="off" />
+                                    {errors.password && touched.password ? (
+                                        <div className={styles.login_error}>
+                                            {errors.password}
+                                        </div>
+                                    ) : null}
+                                </div >
 
-                            <button className={styles.login_continue__btn} type="submit">
-                                Registrarse
-                            </button>
+                                <div className={styles.login_form__inputs}>
+                                    <label>Vuelva a escribir la contraseña</label>
+                                    <Field name="pass2" type="password" autoComplete="off" />
+                                    {errors.pass2 && touched.pass2 ? (
+                                        <div className={styles.login_error}>
+                                            {errors.pass2}
+                                        </div>
+                                    ) : null}
+                                </div>
 
-                            <div className={styles.login_text}>
-                                <h1>Al crear un cuenta, aceptas las
-                                    <span>Condiciones de uso</span>
-                                    y el
-                                    <span>Aviso de privacidad</span>
-                                    de Amazonas.
-                                </h1>
-                                <h2>
-                                    <i className="fa-solid fa-caret-right"></i>
-                                    ¿Necesitas ayuda?
-                                </h2>
-                            </div>
-                        </Form>
-                    )}
-                </Formik>
-            </div>
+                                <button className={styles.login_continue__btn} type="submit">
+                                    Registrarse
+                                </button>
+                            </Form>
+                        )}
+                    </Formik>
+                </div>
 
-            <div className={styles.login_change}>
-                <h1 ><span>¿Ya tienes una cuenta?</span></h1>
-                <Link to="/login"><button>Inicia sesión</button></Link>
-            </div>
-        </div>
+                <div className={styles.login_change}>
+                    <h1 ><span>¿Ya tienes una cuenta?</span></h1>
+                    <Link to="/login"><button>Inicia sesión</button></Link>
+                </div>
+        </motion.div>
+        </div >
     );
 };
 

@@ -37,7 +37,7 @@ const LandingPage = () => {
                         automáticamente las fichas de todas las diversas especies
                         Pokémon vistas y capturadas durante su viaje como entrenadores.
                     </h2>
-                    <button onClick={() => redirectionLogin()}> Get Started </button>
+                    <button onClick={() => redirectionLogin()}> Iniciar </button>
                 </motion.div>
                 <motion.img
                     initial={{ x: 700 }}

@@ -65,7 +65,7 @@ const SideMenu = () => {
                     }
 
                     <Link to="/image-analyzer">
-                        <i class="fa-solid fa-image"></i>
+                        <i className="fa-solid fa-image"></i>
                         <span>Search recipe by image</span>
                     </Link>
 

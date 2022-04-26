@@ -5,12 +5,12 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCV4wfByxJc3_25TlFA405cFbOnJU9_ZO4",
-    authDomain: "makefit-3e6d3.firebaseapp.com",
-    projectId: "makefit-3e6d3",
-    storageBucket: "makefit-3e6d3.appspot.com",
-    messagingSenderId: "126060193456",
-    appId: "1:126060193456:web:bc8998e6a2d0ebddbf7d75"
+    apiKey: "AIzaSyCHUvSCbgz_Eyk7SkUx4xV4oZi5C_9X-2Y",
+    authDomain: "pokedex-562f3.firebaseapp.com",
+    projectId: "pokedex-562f3",
+    storageBucket: "pokedex-562f3.appspot.com",
+    messagingSenderId: "582798797933",
+    appId: "1:582798797933:web:411c90a6b16bba76746364"
 };
 
 // Initialize Firebase
