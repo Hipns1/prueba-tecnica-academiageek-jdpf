@@ -108,13 +108,19 @@ const SearchPokemon = () => {
                                         </div>
                                     </Link>
                                 </div>
-                                <button onClick={() => getEvolution(item)}>Este pokemon evolucionó de...</button>
+                                <motion.button
+                                    animate={{ scale: [1, 1.05, 1, 1.05, 1, 1.05, 1] }}
+                                    transition={{ duration: 4 }}
+                                    onClick={() => getEvolution(item)}>
+                                    <i class="fa-solid fa-computer-mouse"></i>
+                                    &nbsp;<span>Este pokemon evolucionó de...</span>
+                                </motion.button>
                             </div>
                         )
                     })
                     :
                     <div className={styles.pokecard_notResults}>
-                        <img src={pokelogo} alt="pokelogo"/>
+                        <img src={pokelogo} alt="pokelogo" />
                         <h1>Esta pagina te permite buscar tu pokemon favorito por nombre aproximado o incompleto.</h1>
                     </div>
                 }

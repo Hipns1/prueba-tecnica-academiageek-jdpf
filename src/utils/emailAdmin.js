@@ -1,1 +1,1 @@
-export const emailAdmin = 'maketfit@admin.com';
+export const emailAdmin = 'pokedex@admin.com';

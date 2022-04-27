@@ -140,7 +140,13 @@ const PokeCards = () => {
                                         </div>
                                     </Link>
                                 </div>
-                                <button onClick={() => getEvolution(item)}>Este pokemon evolucionó de...</button>
+                                <motion.button
+                                    animate={{ scale: [1, 1.05, 1, 1.05, 1, 1.05, 1] }}
+                                    transition={{ duration: 4 }}
+                                    onClick={() => getEvolution(item)}>
+                                    <i class="fa-solid fa-computer-mouse"></i>
+                                    &nbsp;<span>Este pokemon evolucionó de...</span>
+                                </motion.button>
                             </div>
                         )
                     })
