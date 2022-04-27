@@ -51,6 +51,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-weight: bold;
 
                 i {
                     font-size: 25px;
@@ -72,6 +73,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
             margin-bottom: 20px;
 
             button {
@@ -88,8 +90,6 @@
                     display: none;
                 }
             }
-
-
         }
     }
 
@@ -115,10 +115,11 @@
                 h1 {
                     transition: 0.5s all ease-in-out;
                     display: block;
-                    font-size: 16px;
+                    font-size: 18px;
                     margin-top: 16px;
                     margin-left: 0px;
                     color: white;
+                    font-weight: bold;
                 }
             }
         }
@@ -135,7 +136,7 @@
             a {
                 span {
                     margin-left: 16px;
-                    width: 500px;
+                    width: 350px;
                     transition: 0.3s all ease-in-out;
                     height: auto;
                     opacity: 1;
@@ -166,14 +167,14 @@
                 h1 {
                     width: auto;
                     font-size: 18px;
+                    font-weight: bold;
                     display: block;
                     color: white;
                     cursor: pointer;
-                    margin-left: 16px;
+                    margin: auto !important;
+                    margin-left: 16px !important;
                 }
             }
-
-
         }
     }
 }

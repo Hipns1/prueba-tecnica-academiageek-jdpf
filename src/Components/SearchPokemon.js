@@ -42,9 +42,9 @@ const SearchPokemon = () => {
         })
     }
 
-    //funcion para mostar el detalle
-    const showDetail = (item) => {
-        console.log(item)
+    //FUNCION PARA MOSTAR EL DETALLE
+    const showDetail = (detailPokemon) => {
+        localStorage.setItem('detailPokemon', JSON.stringify(detailPokemon))
     }
 
     //FUNCION PARA OBTENER LA EVOLUCION ANTERIOR DEL POKEMON
@@ -89,18 +89,18 @@ const SearchPokemon = () => {
                 className={styles.pokecard_cards__container}>
                 {filterPokemons().length > 0
                     ?
-                    filterPokemons().map((item, index) => {
-                        let type = item.types[0].type.name;
-                        let type2 = item.types[1] ? item.types[1].type.name : null;
+                    filterPokemons().map((pokemon, index) => {
+                        let type = pokemon.types[0].type.name;
+                        let type2 = pokemon.types[1] ? pokemon.types[1].type.name : null;
                         return (
-
-
                             <div className={styles.pokecard_card} key={index}>
                                 <div className={type + "class"}>
-                                    <Link to={`/detail/${item.name}`} className={styles.link}>
+                                    <Link 
+                                    onClick={() => showDetail(pokemon)}
+                                    to={`/detail/${pokemon.name}`} className={styles.link}>
                                         <div className={styles.pokecard_text}>
-                                            <img src={item.sprites.front_default} alt="pokemon" />
-                                            <h1>{item.name}</h1>
+                                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt="pokemon" />
+                                            <h1>{pokemon.name}<span>N.º0{pokemon.id}</span></h1>
                                             <div className={styles.pokecard_types}>
                                                 <p className={type}>{type}</p>
                                                 {type2 ? <p className={type2}>{type2}</p> : null}
@@ -111,8 +111,8 @@ const SearchPokemon = () => {
                                 <motion.button
                                     animate={{ scale: [1, 1.05, 1, 1.05, 1, 1.05, 1] }}
                                     transition={{ duration: 4 }}
-                                    onClick={() => getEvolution(item)}>
-                                    <i class="fa-solid fa-computer-mouse"></i>
+                                    onClick={() => getEvolution(pokemon)}>
+                                    <i className="fa-solid fa-computer-mouse"></i>
                                     &nbsp;<span>Este pokemon evolucionó de...</span>
                                 </motion.button>
                             </div>
@@ -121,7 +121,11 @@ const SearchPokemon = () => {
                     :
                     <div className={styles.pokecard_notResults}>
                         <img src={pokelogo} alt="pokelogo" />
-                        <h1>Esta pagina te permite buscar tu pokemon favorito por nombre aproximado o incompleto.</h1>
+                        <h1>Esta pagina te permite buscar tu pokemon
+                            favorito por nombre aproximado o incompleto;
+                            en una base de datos de todos los pokemones que
+                            han existido.
+                        </h1>
                     </div>
                 }
             </motion.div>

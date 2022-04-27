@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from "../Styles/PokeCard/PokeCard.module.scss";
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { getEvolution } from '../utils/getEvolve';
 
 const PokeCards = () => {
 
@@ -38,47 +38,27 @@ const PokeCards = () => {
         const url_pagination = `https://pokeapi.co/api/v2/pokemon?limit=25&offset=${counterPage}`;
         getData(url_pagination);
     }
+
+    const navigate = useNavigate();
     //FUNCION PARA INCREMENTAR LA PAGINA
     const counterAument = () => {
         counterAll(counterPage + 25, counter + 1);
+        navigate(`/home/${counter + 1}`);
     }
-
     //FUNCION PARA DECREMENTAR LA PAGINA
     const counterDecrement = () => {
         if (counter > 1) {
             counterAll(counterPage - 25, counter - 1);
+            navigate(`/home/${counter - 1}`);
         }
     }
 
+
     //FUNCION PARA MOSTAR EL DETALLE
-    const showDetail = (item) => {
-        console.log(item)
+    const showDetail = (detailPokemon) => {
+        localStorage.setItem('detailPokemon', JSON.stringify(detailPokemon))
     }
 
-
-    //FUNCION PARA OBTENER LA EVOLUCION ANTERIOR DEL POKEMON
-    const getEvolution = (item) => {
-        axios.get(item.species.url)
-            .then(resp => {
-                if (resp.data.evolves_from_species) {
-                    axios.get(resp.data.evolves_from_species.url)
-                        .then(result => {
-                            Swal.fire({
-                                icon: 'success',
-                                text: 'Este pokemon ha evolucinado de...',
-                                title: `${result.data.name}`,
-
-                            })
-                            console.log(result.data.name)
-                        })
-                } else {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Este pokemon es el primero de su linea evolutiva',
-                    })
-                }
-            })
-    }
 
     //FUNCION PARA BUSCAR POKEMON
     const searchPokemon = (e) => {
@@ -121,18 +101,19 @@ const PokeCards = () => {
                 transition={{ duration: 1.5 }}
                 className={styles.pokecard_cards__container}>
                 {
-                    pokeArray?.map((item, index) => {
-                        let type = item.types[0].type.name;
-                        let type2 = item.types[1] ? item.types[1].type.name : null;
+                    pokeArray?.map((pokemon, index) => {
+                        let type = pokemon.types[0].type.name;
+                        let type2 = pokemon.types[1] ? pokemon.types[1].type.name : null;
                         return (
-
-
                             <div className={styles.pokecard_card} key={index}>
                                 <div className={type + "class"}>
-                                    <Link to={`/detail/${item.name}`} className={styles.link}>
+                                    <Link
+                                        onClick={() => showDetail(pokemon)}
+                                        to={`/detail/${pokemon.name}`}
+                                        className={styles.link}>
                                         <div className={styles.pokecard_text}>
-                                            <img src={item.sprites.front_default} alt="pokemon" />
-                                            <h1>{item.name}</h1>
+                                            <img src={pokemon.sprites.other.dream_world.front_default} alt="pokemon" />
+                                            <h1>{pokemon.name}<span>N.º0{pokemon.id}</span></h1>
                                             <div className={styles.pokecard_types}>
                                                 <p className={type}>{type}</p>
                                                 {type2 ? <p className={type2}>{type2}</p> : null}
@@ -143,8 +124,8 @@ const PokeCards = () => {
                                 <motion.button
                                     animate={{ scale: [1, 1.05, 1, 1.05, 1, 1.05, 1] }}
                                     transition={{ duration: 4 }}
-                                    onClick={() => getEvolution(item)}>
-                                    <i class="fa-solid fa-computer-mouse"></i>
+                                    onClick={() => getEvolution(pokemon)}>
+                                    <i className="fa-solid fa-computer-mouse"></i>
                                     &nbsp;<span>Este pokemon evolucionó de...</span>
                                 </motion.button>
                             </div>
