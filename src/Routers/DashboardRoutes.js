@@ -1,7 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import SideMenu from '../Components/SideMenu';
 import PokeCards from '../Components/PokeCards';
-import ResultSearch from '../Components/ResultsSearch';
+import PruebaAdmin from '../Components/PruebaAdmin';
+import SearchPokemon from '../Components/SearchPokemon';
 
 const DashboardRoutes = () => {
 	return (
@@ -13,7 +14,8 @@ const DashboardRoutes = () => {
 				<Routes>
 					<Route path='/home' element={<PokeCards />} />
 					<Route path='*' element={<Navigate to='/home' />} />
-					<Route path='/search' element={<ResultSearch />} />
+					<Route path='/search' element={<SearchPokemon />} />
+					<Route path='/detail/:name' element={<PruebaAdmin />} />
 				</Routes>
 			</div>
 		</div>

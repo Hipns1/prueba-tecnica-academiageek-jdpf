@@ -120,7 +120,7 @@ const Login = () => {
 
                 <div className={styles.login_change}>
                     <h1 ><span>¿Eres nuevo?</span></h1>
-                    <Link to="/register"><button>Crea tu cuenta de Amazonas</button></Link>
+                    <Link to="/register"><button>Crea tu cuenta Pokedex</button></Link>
                 </div>
             </motion.div>
         </div>

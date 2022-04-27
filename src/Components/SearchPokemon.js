@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import styles from "../Styles/PokeCard/PokeCard.module.scss";
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
+import styles from "../Styles/PokeCard/PokeCard.module.scss";
+import { Link } from 'react-router-dom';
+import pokelogo from "../Styles/Images/pokelogo.png";
 
-const PokeCards = () => {
+const SearchPokemon = () => {
 
-    //VARIABLES PDE ESTADOS
-    let [counterPage, setCounterPage] = useState(0);
+    const [inputValue, setInputValue] = useState('');
     const [pokeArray, setPokeArray] = useState([]);
-    let [counter, setCounter] = useState(1);
 
-    //URLS DE LA POKEAPI
-    const url_api = `https://pokeapi.co/api/v2/pokemon?limit=25&offset=0`;
 
-    //funcion para obtener la data para la carga principal
-    const getData = async (url) => {
-        axios.get(url)
+    //FUNCION PARA OBTENER LA DATA A FILTRAR 
+    const getData = async () => {
+        axios.get("https://pokeapi.co/api/v2/pokemon?limit=100000")
             .then(resp => {
                 for (let i = 0; i < resp.data.results.length; i++) {
-                    setPokeArray([])
                     axios.get(resp.data.results[i].url)
                         .then(result => {
                             setPokeArray(pokeArray => [...pokeArray, result.data])
@@ -29,32 +25,27 @@ const PokeCards = () => {
             })
     }
 
-
-    //FUNCION GENERAL DE PAGINACION
-    const counterAll = (page, indicator) => {
-        counterPage = page;
-        setCounterPage(counterPage)
-        setCounter(indicator)
-        const url_pagination = `https://pokeapi.co/api/v2/pokemon?limit=25&offset=${counterPage}`;
-        getData(url_pagination);
-    }
-    //FUNCION PARA INCREMENTAR LA PAGINA
-    const counterAument = () => {
-        counterAll(counterPage + 25, counter + 1);
-    }
-
-    //FUNCION PARA DECREMENTAR LA PAGINA
-    const counterDecrement = () => {
-        if (counter > 1) {
-            counterAll(counterPage - 25, counter - 1);
+    //CAPTURAR EL VALOR DEL INPUT
+    const searchPokemon = (e) => {
+        e.preventDefault();
+        setInputValue(document.getElementById('inputSearch').value)
+        if (inputValue === '') {
+            getData();
         }
     }
 
-    //FUNCION PARA MOSTAR EL DETALLE
+
+    //FUNCION PARA FILTRAR LOS POKEMON
+    const filterPokemons = () => {
+        return pokeArray.filter(item => {
+            return item.name.toLowerCase().includes(inputValue.toLowerCase())
+        })
+    }
+
+    //funcion para mostar el detalle
     const showDetail = (item) => {
         console.log(item)
     }
-
 
     //FUNCION PARA OBTENER LA EVOLUCION ANTERIOR DEL POKEMON
     const getEvolution = (item) => {
@@ -80,30 +71,6 @@ const PokeCards = () => {
             })
     }
 
-    //FUNCION PARA BUSCAR POKEMON
-    const searchPokemon = (e) => {
-        e.preventDefault();
-        const search = document.getElementById('search').value;
-        if (search === '') {
-            getData(url_api);
-        } else {
-            const url_search = `https://pokeapi.co/api/v2/pokemon/${search}`;
-            axios.get(url_search)
-                .then(resp => {
-                    console.log(resp)
-                    setPokeArray([resp.data])
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-    }
-
-    useEffect(() => {
-        getData(url_api);
-    }, [])
-
-
     return (
         <div className={styles.pokecard_container}>
             <motion.form
@@ -111,7 +78,7 @@ const PokeCards = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5 }}
                 onSubmit={searchPokemon}>
-                <input id="search" type="text" placeholder="Buscar Pokemon por nombre exacto..." />
+                <input id="inputSearch" type="text" placeholder="Buscar Pokemon..." />
                 <button type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
             </motion.form>
 
@@ -120,8 +87,9 @@ const PokeCards = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1.5 }}
                 className={styles.pokecard_cards__container}>
-                {
-                    pokeArray?.map((item, index) => {
+                {filterPokemons().length > 0
+                    ?
+                    filterPokemons().map((item, index) => {
                         let type = item.types[0].type.name;
                         let type2 = item.types[1] ? item.types[1].type.name : null;
                         return (
@@ -144,28 +112,15 @@ const PokeCards = () => {
                             </div>
                         )
                     })
+                    :
+                    <div className={styles.pokecard_notResults}>
+                        <img src={pokelogo} alt="pokelogo"/>
+                        <h1>Esta pagina te permite buscar tu pokemon favorito por nombre aproximado o incompleto.</h1>
+                    </div>
                 }
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                transition={{ duration: 1.5 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className={styles.pokecard_paginate__btns}>
-                <button
-                    disabled={(counter <= 1) ? true : false}
-                    onClick={() => counterDecrement()} >
-                    <i className="fa-solid fa-angles-left"></i>
-                </button>
-                <h1>{counter}</h1>
-                <button
-                    onClick={() => counterAument()}>
-                    <i className="fa-solid fa-angles-right"></i>
-                </button>
             </motion.div>
         </div >
     )
 }
 
-export default PokeCards
+export default SearchPokemon;
