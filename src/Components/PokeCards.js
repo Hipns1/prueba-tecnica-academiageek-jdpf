@@ -113,7 +113,8 @@ const PokeCards = () => {
                                         className={styles.link}>
                                         <div className={styles.pokecard_text}>
                                             <img src={pokemon.sprites.other.dream_world.front_default} alt="pokemon" />
-                                            <h1>{pokemon.name}<span>N.º0{pokemon.id}</span></h1>
+                                            <h1>{pokemon.name}</h1>
+                                            <h2>N.º0{pokemon.id}</h2>
                                             <div className={styles.pokecard_types}>
                                                 <p className={type}>{type}</p>
                                                 {type2 ? <p className={type2}>{type2}</p> : null}

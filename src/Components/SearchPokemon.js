@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import styles from "../Styles/PokeCard/PokeCard.module.scss";
 import { Link } from 'react-router-dom';
 import pokelogo from "../Styles/Images/pokelogo.png";
+import { getEvolution } from '../utils/getEvolve';
 
 const SearchPokemon = () => {
 
@@ -47,30 +48,6 @@ const SearchPokemon = () => {
         localStorage.setItem('detailPokemon', JSON.stringify(detailPokemon))
     }
 
-    //FUNCION PARA OBTENER LA EVOLUCION ANTERIOR DEL POKEMON
-    const getEvolution = (item) => {
-        axios.get(item.species.url)
-            .then(resp => {
-                if (resp.data.evolves_from_species) {
-                    axios.get(resp.data.evolves_from_species.url)
-                        .then(result => {
-                            Swal.fire({
-                                icon: 'success',
-                                text: 'Este pokemon ha evolucinado de...',
-                                title: `${result.data.name}`,
-
-                            })
-                            console.log(result.data.name)
-                        })
-                } else {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Este pokemon es el primero de su linea evolutiva',
-                    })
-                }
-            })
-    }
-
     return (
         <div className={styles.pokecard_container}>
             <motion.form
@@ -100,7 +77,8 @@ const SearchPokemon = () => {
                                     to={`/detail/${pokemon.name}`} className={styles.link}>
                                         <div className={styles.pokecard_text}>
                                             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt="pokemon" />
-                                            <h1>{pokemon.name}<span>N.º0{pokemon.id}</span></h1>
+                                            <h1>{pokemon.name}</h1>
+                                            <h2>N.º0{pokemon.id}</h2>
                                             <div className={styles.pokecard_types}>
                                                 <p className={type}>{type}</p>
                                                 {type2 ? <p className={type2}>{type2}</p> : null}
