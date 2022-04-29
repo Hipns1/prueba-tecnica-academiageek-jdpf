@@ -1,17 +1,19 @@
 .detail_container {
-    border: 2px solid red;
     width: 100%;
     height: 100vh;
 
-
     .detail_back {
-        padding: 16px;
+        padding: 10px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
 
         button {
+            margin-left: 16px;
             border: none;
             background-color: transparent;
             font-size: 16px;
-            color: rgb(60, 0, 0);
+            color: rgb(8, 9, 52);
             cursor: pointer;
 
             i {
@@ -19,25 +21,40 @@
                 margin-right: 16px;
             }
         }
+
+        img {
+            height: 50px;
+            margin-left: 16px;
+        }
     }
 
     .detail_card {
         display: flex;
         justify-content: center;
-        
+        align-items: center;
+        flex-wrap: wrap;
+
         .detail_image {
+            margin-top: 26px !important;
             width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 0 30px;
 
-            h1{
+            @media (max-width: 410px) {
+                width: 90%;   
+                margin: 16px 0;          
+            }
+
+            h1 {
                 font-size: 36px;
                 margin-bottom: 20px;
                 margin-top: 26px;
                 text-transform: capitalize;
+                color: rgb(8, 9, 52);
 
-                span{
+                span {
                     font-size: 20px;
                     font-weight: normal;
                     color: rgb(146, 146, 146);
@@ -49,12 +66,13 @@
                 width: 90%;
                 height: 400px;
             }
-            
-            .detail_sprites{
+
+            .detail_sprites {
                 display: flex;
                 justify-content: center;
                 margin-top: 16px;
-                img{
+
+                img {
                     width: 100px;
                     height: 100px;
                     margin: 0 16px;
@@ -64,6 +82,154 @@
 
         .detail_text {
             width: 400px;
+            margin: 0 30px;
+
+            @media (max-width: 410px) {
+                width: 90%;   
+                margin:16px 0;          
+            }
+
+            .details_experiencia {
+                margin-bottom: 16px;
+                h1 {
+                    font-size: 18px;
+                    color: rgb(8, 9, 52);
+                }
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: auto;
+                    width: 75px;
+                    height: 30px;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+                    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+                    border-radius: 50px;
+                    background-color: white;
+
+                    p {
+                        font-size: 10px;
+                        margin: 0;
+                        font-weight: bold;
+                        color: rgb(146, 146, 146);
+
+                        span {
+                            font-size: 16px;
+                            color: rgb(8, 9, 52);
+                            font-weight: bold;
+                            margin-left: 8px;
+                        }
+                    }
+                }
+            }
+
+            .detail_stats {
+                margin-top: 16px;
+                width: 100%;
+
+                h1 {
+                    font-size: 18px;
+                    color: rgb(8, 9, 52);
+                }
+            }
+        }
+
+        .detail_abilities {
+            width: 250px;
+            margin: 0 30px;
+
+            .details_tipo {
+                h1 {
+                    font-size: 18px;
+                    color: rgb(8, 9, 52);
+                }
+
+                div {
+                    display: flex;
+
+                    p {
+                        margin-top: 10px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 16px;
+                        margin-right: 16px;
+                        margin-left: 16px;
+                        color: white;
+                        height: 25px;
+                        width: 70px;
+                        border-radius: 50px;
+                    }
+                }
+            }
+
+            .details_medidas {
+                margin-top: 16px;
+
+                h1 {
+                    font-size: 18px;
+                    color: rgb(8, 9, 52);
+                }
+
+                p {
+                    margin-top: 10px !important;
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    margin-top: -8px;
+                    color: rgb(8, 9, 52);
+
+                    img {
+                        width: 25px;
+                        height: 25px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+
+            .details_habilidades {
+                margin-top: 26px;
+                h1 {
+                    font-size: 18px;
+                    color: rgb(8, 9, 52);
+                }
+                p{
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    margin-top: -8px;
+                    color: rgb(8, 9, 52);
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+
+            .details_moves {
+                margin-top: 26px;
+                h1 {
+                    font-size: 18px;
+                    color: rgb(8, 9, 52);
+                }
+                p{
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    margin-top: -8px;
+                    color: rgb(8, 9, 52);
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 8px;
+                    }
+                }
+            }
         }
     }
 }

@@ -63,7 +63,7 @@ const PokeCards = () => {
     //FUNCION PARA BUSCAR POKEMON
     const searchPokemon = (e) => {
         e.preventDefault();
-        const search = document.getElementById('search').value;
+        const search = document.getElementById('search').value.toLocaleLowerCase();
         if (search === '') {
             getData(url_api);
         } else {

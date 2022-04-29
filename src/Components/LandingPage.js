@@ -31,7 +31,7 @@ const LandingPage = () => {
                     transition={{ duration: 1.5 }}>
                     <h1>Pokedex</h1>
                     <h2>
-                        <b>Vive la experiencia de ser un entrnador pokemon. </b>
+                        <b>Vive la experiencia de ser un entrenador pokemon. </b>
                         La pokedex es una enciclopedia electrónica portátil que
                         los entrenadores Pokémon llevan consigo para registrar
                         automáticamente las fichas de todas las diversas especies
