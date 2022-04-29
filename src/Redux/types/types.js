@@ -12,8 +12,8 @@ export const typesRegister ={
 
 //Types del CRUD del Maestro Pokemon
 export const typesMaestroPokemon ={
-    agregar: 'agregar',
+    add: 'add',
     edit: 'edit',
-    eliminar: 'eliminar',
+    delete: 'delete',
     list: 'list'
 }

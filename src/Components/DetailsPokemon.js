@@ -19,9 +19,6 @@ const DetailsPokemon = () => {
         navigate("/home");
     }
 
-    //GRAFICO TIPO RADAR PARA LAS ESTADISTICAS DEL POKEMON
-
-
     useEffect(() => {
         const detailPokemon = [JSON.parse(localStorage.getItem('detailPokemon'))];
         setDetail(detailPokemon);
@@ -102,11 +99,11 @@ const DetailsPokemon = () => {
                                 <div className={styles.details_habilidades}>
                                     <h1>Habilidades:</h1>
                                     <p>
-                                        <img src={pokeGold} />
+                                        <img src={pokeGold} alt="pokegold" />
                                         {pokemon.abilities[0].ability.name}
                                     </p>
                                     <p>
-                                        <img src={pokeGold} />
+                                        <img src={pokeGold} alt="pokegold"/>
                                         {pokemon.abilities[1] ? pokemon.abilities[1].ability.name : null}
                                     </p>
                                 </div>
@@ -115,19 +112,19 @@ const DetailsPokemon = () => {
                                 <div className={styles.details_moves}>
                                     <h1>Movimientos:</h1>
                                     <p>
-                                        <img src={poke} />
+                                        <img src={poke} alt="poke"/>
                                         {pokemon.moves[0].move.name}
                                     </p>
                                     <p>
-                                        <img src={poke} />
+                                        <img src={poke} alt="poke"/>
                                         {pokemon.moves[1] ? pokemon.moves[1].move.name : null}
                                     </p>
                                     <p>
-                                        <img src={poke} />
+                                        <img src={poke} alt="poke"/>
                                         {pokemon.moves[2] ? pokemon.moves[2].move.name : null}
                                     </p>
                                     <p>
-                                        <img src={poke} />
+                                        <img src={poke} alt="poke"/>
                                         {pokemon.moves[3] ? pokemon.moves[3].move.name : null}
                                     </p>
                                 </div>

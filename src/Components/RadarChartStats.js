@@ -20,8 +20,7 @@ ChartJS.register(
 );
 
 const RadarChartStats = ({ pokemon }) => {
-    //color para cada stat
-    const type = pokemon.types[0].type.name;
+
     const data = {
         labels: [
             'HP: ' + pokemon.stats[0].base_stat,

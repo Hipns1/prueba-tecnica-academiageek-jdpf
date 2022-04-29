@@ -23,18 +23,18 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
-    //funcion para enviar el formulario
+    //FUNCION PARA ENVIAR LOS DATOS DEL FORMULARIO
     const handleSubmit = (values) => {
         localStorage.setItem('email', values.email)
         dispatch(loginEmailPassAsync(values.email, values.password))
     }
 
-    //funcion para iniciar sesion con google
+    //FUNCION PARA INICIAR SESION CON GOOGLE
     const handleGoogle = () => {
         dispatch(loginGoogle())
     }
 
-    //funcion para iniciar sesion con facebook
+    //FUNCION PARA INICIAR SESION CON FACEBOOK
     const handleFacebook = () => {
         dispatch(loginFacebook())
     }
@@ -120,7 +120,7 @@ const Login = () => {
 
                 <div className={styles.login_change}>
                     <h1 ><span>¿Eres nuevo?</span></h1>
-                    <Link to="/register"><button>Crea tu cuenta Pokedex</button></Link>
+                    <Link style={{textDecoration: "none"}} to="/register"><button>Crea tu cuenta Pokedex</button></Link>
                 </div>
             </motion.div>
         </div>

@@ -1,0 +1,170 @@
+.registerMaster_container {
+    height: 100vh;
+    width: 100%;
+
+    .registerMaster_back {
+        padding: 10px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+        height: 9vh;
+
+        button {
+            margin-left: 16px;
+            border: none;
+            background-color: transparent;
+            font-size: 16px;
+            color: rgb(8, 9, 52);
+            cursor: pointer;
+
+            i {
+                font-size: 16px;
+                margin-right: 16px;
+            }
+        }
+
+        img {
+            height: 50px;
+            margin-left: 16px;
+        }
+    }
+
+    .registerMaster_form {
+        background-color: #e5e5e6;
+        height: 91vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: 1160px) {
+            background-image: url("../../Styles/Images/oak-blur.png");
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 400px;
+        }
+
+        @media (max-width: 500px) {
+            background-position: center;
+            background-size: contain;
+        }
+
+        img {
+            width: 400px;
+            margin: 0 30px;
+
+            @media (max-width: 1160px) {
+                display: none;
+            }
+        }
+
+        .registerMaster_fields {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 450px;
+            margin: 0 30px;
+            background-color: rgba(234, 234, 234, 0.441);
+
+            @media (max-width: 600px) {
+                padding: 0 16px;
+                width: 100%;
+                margin: 0;
+                margin-top: 30px;
+            }
+
+            h1 {
+                font-size: 22px;
+                color: rgb(8, 9, 52);
+                text-align: center;
+                margin-bottom: 16px;
+                font-weight: bold;
+
+                @media (max-width: 600px) {
+                    width: 95%;
+                }
+            }
+
+            label {
+                font-size: 14px;
+                color: rgb(8, 9, 52);
+                margin-bottom: 2px;
+                font-weight: bold;
+
+                @media (max-width: 600px) {
+                    width: 95%;
+                }
+            }
+
+            input {
+                border: 1px solid rgb(219, 219, 219);
+                border-radius: 5px;
+                height: 40px;
+                padding: 0 10px;
+                font-size: 14px;
+                color: rgb(8, 9, 52);
+                margin-bottom: 15px;
+
+                @media (max-width: 600px) {
+                    width: 100%;
+                }
+            }
+
+            .registerMaster_loadImage {
+                margin-top: 10px;
+                height: 40px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                border-radius: 5px;
+                background-color: #cbbfcf;
+                color: white;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s all ease-in-out;
+
+                &:hover {
+                    transform: scale(1.02);
+                    background-color: transparent;
+                    color: #cbbfcf;
+                    border: 3px solid #cbbfcf;
+                }
+
+                i {
+                    font-size: 16px;
+                    margin-right: 16px;
+                }
+            }
+
+            button {
+                font-weight: bold;
+                height: 40px;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-color: #cbbfcf;
+                font-size: 16px;
+                color: white;
+                border: none;
+                transition: 0.3s all ease-in-out;
+
+                &:hover {
+                    transform: scale(1.02);
+                    background-color: transparent;
+                    color: #cbbfcf;
+                    border: 3px solid #cbbfcf;
+                }
+            }
+        }
+    }
+}
+
+//ESTILOS DE LOS ERRORES DE YUP
+.registerMaster_error {
+    color: red;
+    font-size: 13px;
+    margin-top: -18px;
+    font-style: italic;
+}

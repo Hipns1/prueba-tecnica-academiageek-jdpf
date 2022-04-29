@@ -8,7 +8,7 @@ const initialState = {
 
 export const maestroPokemonReducers = (state = initialState, action) => {
     switch (action.type) {
-        case typesMaestroPokemon.agregar:
+        case typesMaestroPokemon.add:
             return {
                 maestro: [action.payload]
             }
@@ -20,7 +20,7 @@ export const maestroPokemonReducers = (state = initialState, action) => {
 
         case typesMaestroPokemon.delete:
             return {
-                maestro: state.maestro.filter(maestro => maestro.productId !== action.payload)
+                maestro: state.maestro.filter(maestro => maestro.masterId !== action.payload)
             }
 
         case typesMaestroPokemon.edit:

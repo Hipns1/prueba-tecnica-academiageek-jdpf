@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from "../Styles/SideMenu/SideMenu.module.scss";
 import pokeball from "../Styles/Images/pokeball.png";
 import { getAuth } from 'firebase/auth';
@@ -6,29 +6,21 @@ import md5 from "md5";
 import { Link } from 'react-router-dom';
 import { logoutAsync } from '../Redux/actions/actionLogin';
 import { useDispatch } from 'react-redux';
-import { emailAdmin } from '../utils/emailAdmin';
 
 const SideMenu = () => {
 
     const dispatch = useDispatch();
-    const [admin, setAdmin] = useState(false);
 
-    //obtener usuraio
+    //OBTENER USUARIO ACTUAL
     const auth = getAuth()
     const user = auth.currentUser;
 
-    useEffect(() => {
-        if (user.email === emailAdmin) {
-            setAdmin(true)
-        }
-    }, [user.email]);
-
-    //Imagen de gravatar
+    //IMAGEN DE GRAVATAR
     const hash = md5(user.email);
     const gravatar = `https://www.gravatar.com/avatar/${hash}?d=identicon`;
 
 
-    //funcion para cerrar sesion
+    //FUNCION PARA CERRAR SESION
     const handleLogout = () => {
         dispatch(logoutAsync())
     }

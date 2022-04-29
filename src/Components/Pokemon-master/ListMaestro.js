@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import pokelogo from "../../Styles/Images/pokelogo.png";
 import { deleteAsync, listarMaestrosAsync } from '../../Redux/actions/actionMaestroPokemon';
 import EditMaestro from './EditMaestro';
+import mew from "../../Styles/Images/mew.png";
+import styles from "../../Styles/PokemonMaster/ListMaestro.module.scss";
+import { motion } from "framer-motion";
 
 const ListMaestro = () => {
     const dispatch = useDispatch();
@@ -14,7 +17,7 @@ const ListMaestro = () => {
     //CONSUMIR LISTA DE MAESTRO DESDE LA STORE DE REDUX
     const { maestro } = useSelector(store => store.maestro);
 
-    
+
     //VOLVER A LA PAGINA DE INICIO
     const backPage = () => {
         navigate("/");
@@ -35,43 +38,58 @@ const ListMaestro = () => {
     useEffect(() => {
         dispatch(listarMaestrosAsync())
     }, [dispatch]);
+
     return (
-        <div>
-            <div>
-                <button onClick={() => backPage()}>Vover a la pagina de inicio</button>
-                <Link to="/registrar-maestro-pokemon">
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                    Registrate como maestro pokemon
-                </Link>
-
+        <div className={styles.listMaster_container}>
+            <div className={styles.listMaster_back}>
                 <div>
-                    {maestro.length > 0
-                        ? maestro?.map((maestro, index) => (
-                            <div key={index}>
-                                <img src={maestro.imagen} alt="imagen" width={200} />
-                                <h1>{maestro.nombre}</h1>
-                                <h2>{maestro.edad}</h2>
-                                <h2>{maestro.pokemons}</h2>
-                                <h2>{maestro.mvp}</h2>
-                                <h2>{maestro.victorias}</h2>
-                                <h2>{maestro.derrotas}</h2>
-
-                                <div>
-                                    <button onClick={() => editMaestro(maestro)}>Editar</button>
-                                    <button onClick={() => deleteMaestro(maestro.masterId)}>Eliminar</button>
-                                </div>
-                            </div>
-                        ))
-                        : <div>
-                            <h1>
-                                <img src={pokelogo} alt="logo" />
-                                No hay maestros registrados.
-                                Se el primero en formar parte de
-                                esta gran comunidad.
-                            </h1>
-                        </div>
-                    }
+                    <button onClick={() => backPage()}>
+                        <i className="fa-solid fa-backward"></i>
+                        Volver a la pagina anterior
+                    </button>
+                    <img src={mew} alt="mewtwo" />
                 </div>
+                <Link to="/registrar-maestro-pokemon">
+                    <i className="fa-solid fa-plus"></i>
+                    Registrar masestro pokemon
+                </Link>
+            </div>
+
+            <div className={styles.listMaster_card__container}>
+                {maestro.length > 0
+                    ? maestro?.map((maestro, index) => (
+                        <div key={index} className={styles.listMaster_card}>
+                            <div className={styles.listMaster_image}>
+                                <img src={maestro.imagen} alt="imagen" />
+                            </div>
+                            <div className={styles.listMaster_text}>
+                                <h1>{maestro.nombre}</h1>
+                                <h2>Edad: <span>{maestro.edad}</span></h2>
+                                <h2># de pokemons: <span>{maestro.pokemons}</span></h2>
+                                <h2>Pokemon mas valioso: <span>{maestro.mvp}</span></h2>
+                                <h2>Victorioas: <span>{maestro.victorias}</span></h2>
+                                <h2>Derrotas: <span>{maestro.derrotas}</span></h2>
+                            </div>
+
+                            <div className={styles.listMaster_btns}>
+                                <button onClick={() => editMaestro(maestro)}>Editar</button>
+                                <button onClick={() => deleteMaestro(maestro.masterId)}>Eliminar</button>
+                            </div>
+                        </div>
+                    ))
+                    : <motion.div
+                        initial={{ y: -500, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className={styles.listMaster_vacio}>
+                        <h1>
+                            <img src={pokelogo} alt="logo" />
+                            No hay maestros registrados.
+                            Se el primero en formar parte de
+                            esta gran comunidad.
+                        </h1>
+                    </motion.div>
+                }
             </div>
             <div style={{ width: "100%" }}>
                 {modalEditar ? <EditMaestro maestro={maestroEditar} set={setModalEditar} /> : null}

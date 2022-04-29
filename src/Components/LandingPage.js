@@ -8,6 +8,7 @@ import pokelogo from "../Styles/Images/pokelogo.png";
 const LandingPage = () => {
     const navigate = useNavigate();
 
+    //FUNCION QUE REDIRECCIONA AL LOGIN
     const redirectionLogin = () => {
         navigate("/login");
     }

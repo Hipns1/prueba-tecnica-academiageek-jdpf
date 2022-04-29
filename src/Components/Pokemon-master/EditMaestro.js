@@ -27,9 +27,11 @@ const EditMaestro = ({ maestro, set }) => {
         imagen: maestro.imagen,
         masterId: maestro.masterId
     })
+    
     const { nombre, edad, pokemons, mvp, victorias, derrotas, imagen, masterId } = values;
 
-    //Submit del formulario y dispatch de los datos
+
+    //SUBMIT DEL FORMULARIO Y DISPATCH DE LOS DATOS
     const handleSubmit = (e) => {
         e.preventDefault()
         if (imagenEdit === undefined) {
@@ -47,7 +49,7 @@ const EditMaestro = ({ maestro, set }) => {
     }
 
 
-    //Función para subir la imagen a cloudinary y obtener la URL
+    //FUNCION PARA SUBIR LA IMAGEN A CLOUDINARY
     const imagenHandler = async (e) => {
         Swal.fire({
             icon: 'warning',
@@ -72,84 +74,82 @@ const EditMaestro = ({ maestro, set }) => {
 
     return (
         <div>
-            <>
-                <Modal
-                    show={show}
-                    onHide={handleClose}
-                    backdrop="static">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Editar producto</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <form onSubmit={() => handleSubmit()}>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static">
+                <Modal.Header closeButton>
+                    <Modal.Title>Editar maestro pokemon</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={() => handleSubmit()}>
 
-                            <label>Nombre</label>
-                            <input
-                                type="text"
-                                name="nombre"
-                                value={nombre}
-                                onChange={handleInputChange} />
+                        <label>Nombre</label>
+                        <input
+                            type="text"
+                            name="nombre"
+                            value={nombre}
+                            onChange={handleInputChange} />
 
-                            <label>Edad</label>
-                            <input
-                                type="number"
-                                name="edad"
-                                value={edad}
-                                onChange={handleInputChange} />
+                        <label>Edad</label>
+                        <input
+                            type="number"
+                            name="edad"
+                            value={edad}
+                            onChange={handleInputChange} />
 
-                            <label># de pokemons</label>
-                            <input
-                                type="number"
-                                name="pokemons"
-                                value={pokemons}
-                                onChange={handleInputChange} />
+                        <label># de pokemons</label>
+                        <input
+                            type="number"
+                            name="pokemons"
+                            value={pokemons}
+                            onChange={handleInputChange} />
 
-                            <label>Pokemon mas valioso</label>
-                            <input
-                                type="text"
-                                name="mvp"
-                                value={mvp}
-                                onChange={handleInputChange} />
+                        <label>Pokemon más valioso</label>
+                        <input
+                            type="text"
+                            name="mvp"
+                            value={mvp}
+                            onChange={handleInputChange} />
 
-                            <label># de victorias</label>
-                            <input
-                                type="text"
-                                name="victorias"
-                                value={victorias}
-                                onChange={handleInputChange} />
-
-
-                            <label># de derrotas</label>
-                            <input
-                                type="text"
-                                name="derrotas"
-                                value={derrotas}
-                                onChange={handleInputChange} />
+                        <label># de victorias</label>
+                        <input
+                            type="text"
+                            name="victorias"
+                            value={victorias}
+                            onChange={handleInputChange} />
 
 
-                            <img
-                                src={imagen} alt=""
-                                style={{ height: "200px", margin: "auto" }}
-                            />
-                            <input
-                                type="file"
-                                id="imgCargar"
-                                name="imagen"
-                                onChange={imagenHandler} />
-                            <label
-                                htmlFor="imgCargar">
-                                <i className="fa-solid fa-upload"></i>
-                                Cargar imagen
-                            </label>
+                        <label># de derrotas</label>
+                        <input
+                            type="text"
+                            name="derrotas"
+                            value={derrotas}
+                            onChange={handleInputChange} />
 
-                            <button type="submit" onClick={handleSubmit}>
-                                Guardar
-                            </button>
 
-                        </form>
-                    </Modal.Body>
-                </Modal>
-            </>
+                        <img
+                            src={imagen} alt=""
+                            style={{ height: "200px", margin: "auto" }}
+                        />
+                        <input
+                            type="file"
+                            id="imgCargar"
+                            name="imagen"
+                            onChange={imagenHandler} />
+                        <label
+                            htmlFor="imgCargar">
+                            <i className="fa-solid fa-upload"></i>
+                            Cargar imagen
+                        </label>
+
+                        <button type="submit" onClick={handleSubmit}>
+                            Guardar
+                        </button>
+
+                    </form>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };

@@ -15,7 +15,7 @@ const PokeCards = () => {
     //URLS DE LA POKEAPI
     const url_api = `https://pokeapi.co/api/v2/pokemon?limit=25&offset=0`;
 
-    //funcion para obtener la data para la carga principal
+    //FUNCION PARA OBTENER LA DATA
     const getData = async (url) => {
         axios.get(url)
             .then(resp => {
@@ -81,7 +81,7 @@ const PokeCards = () => {
 
     useEffect(() => {
         getData(url_api);
-    }, [])
+    }, [url_api])
 
 
     return (

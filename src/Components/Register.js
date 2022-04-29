@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import pokelogo from "../Styles/Images/pokelogo.png";
 import mewto from "../Styles/Images/mewto.png";
 
-//validaciones de cada input
+//VALIDACIONES DE CADA INPUT
 const SignupSchema = Yup.object().shape({
     nombre: Yup.string()
         .min(3, 'El nombre debe tener al menos 2 caracteres')
@@ -31,7 +31,7 @@ const SignupSchema = Yup.object().shape({
 const Register = () => {
     const dispatch = useDispatch();
 
-    //funcion para dispatch de register y set usuario en localStorage
+    //FUNCION PARA ENVIAR LOS DATOS DEL FORMULARIO
     const handleSubmit = (values) => {
         localStorage.setItem('email', values.email)
         dispatch(registerAsync(values.email, values.password, values.nombre))
@@ -126,7 +126,7 @@ const Register = () => {
 
                 <div className={styles.login_change}>
                     <h1 ><span>¿Ya tienes una cuenta?</span></h1>
-                    <Link to="/login"><button>Inicia sesión</button></Link>
+                    <Link style={{textDecoration: "none"}} to="/login"><button>Inicia sesión</button></Link>
                 </div>
         </motion.div>
         </div >

@@ -5,10 +5,10 @@ import { db } from "../../Firebase/credentials";
 import { typesMaestroPokemon } from "../types/types";
 
 //AGREGAR
-export const addMaestroSync = (productos) => {
+export const addMaestroSync = (maestro) => {
     return {
-        type: typesMaestroPokemon.agregar,
-        payload: productos
+        type: typesMaestroPokemon.add,
+        payload: maestro
     }
 }
 export const addMaestroAsync = (nombre, edad, pokemons, mvp, victorias, derrotas, imagen, masterId) => {
@@ -63,7 +63,6 @@ export const deleteSync = (mastertId) => {
 }
 
 export const deleteAsync = (masterId) => {
-    console.log(masterId)
     return async (dispatch) => {
         const collecionTraer = collection(db, "pokedex");
         const q = query(collecionTraer, where("masterId", "==", masterId));
@@ -72,6 +71,7 @@ export const deleteAsync = (masterId) => {
             deleteDoc(doc(db, "pokedex", docu.id))
         })
         dispatch(listarMaestrosAsync())
+        dispatch(deleteSync(masterId))
     }
 }
 
