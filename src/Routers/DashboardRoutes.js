@@ -3,6 +3,8 @@ import SideMenu from '../Components/SideMenu';
 import PokeCards from '../Components/PokeCards';
 import SearchPokemon from '../Components/SearchPokemon';
 import DetailsPokemon from '../Components/DetailsPokemon';
+import RegistroMaestro from '../Components/Pokemon-master/RegistroMaestro';
+import ListMaestro from '../Components/Pokemon-master/ListMaestro';
 
 const DashboardRoutes = () => {
 	return (
@@ -17,6 +19,8 @@ const DashboardRoutes = () => {
 					<Route path='*' element={<Navigate to='/home/1' />} />
 					<Route path='/search' element={<SearchPokemon />} />
 					<Route path='/detail/:name' element={<DetailsPokemon />} />
+					<Route path='/maestro-pokemon' element={<ListMaestro/>}></Route>
+					<Route path='/registrar-maestro-pokemon' element={<RegistroMaestro/>}></Route>
 				</Routes>
 			</div>
 		</div>

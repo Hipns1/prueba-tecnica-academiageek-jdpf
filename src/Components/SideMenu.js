@@ -57,13 +57,13 @@ const SideMenu = () => {
                         <span>Busca tu pokemon favorito</span>
                     </Link>
 
-                    <Link to="/image-analyzer">
+                    {/* <Link to="/image-analyzer">
                         <i className="fa-solid fa-plus"></i>
                         <span>Agregar pokemon descubierto</span>
-                    </Link>
+                    </Link> */}
 
-                    <Link to="/image-analyzer">
-                    <i className="fa-solid fa-address-book"></i>
+                    <Link to="/maestro-pokemon">
+                        <i className="fa-solid fa-address-book"></i>
                         <span>Resgistro maestro pokemon</span>
                     </Link>
 

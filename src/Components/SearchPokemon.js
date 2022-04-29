@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
 import styles from "../Styles/PokeCard/PokeCard.module.scss";
 import { Link } from 'react-router-dom';
