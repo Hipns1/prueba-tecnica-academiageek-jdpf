@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { editarAsync } from '../../Redux/actions/actionMaestroPokemon';
 import { FileUpload } from '../../utils/FileUpload';
 import { useForm } from '../../utils/useForm';
+import styles from "../../Styles/PokemonMaster/ListMaestro.module.scss";
 
 let imagenEdit;
 
@@ -27,7 +28,7 @@ const EditMaestro = ({ maestro, set }) => {
         imagen: maestro.imagen,
         masterId: maestro.masterId
     })
-    
+
     const { nombre, edad, pokemons, mvp, victorias, derrotas, imagen, masterId } = values;
 
 
@@ -82,7 +83,7 @@ const EditMaestro = ({ maestro, set }) => {
                     <Modal.Title>Editar maestro pokemon</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={() => handleSubmit()}>
+                    <form onSubmit={() => handleSubmit()} className={styles.edit_container}>
 
                         <label>Nombre</label>
                         <input
@@ -130,14 +131,15 @@ const EditMaestro = ({ maestro, set }) => {
 
                         <img
                             src={imagen} alt=""
-                            style={{ height: "200px", margin: "auto" }}
                         />
                         <input
+                            style={{ display: 'none' }}
                             type="file"
                             id="imgCargar"
                             name="imagen"
                             onChange={imagenHandler} />
                         <label
+                            className={styles.label_img}
                             htmlFor="imgCargar">
                             <i className="fa-solid fa-upload"></i>
                             Cargar imagen

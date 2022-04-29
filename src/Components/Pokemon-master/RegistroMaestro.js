@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from "../../Styles/PokemonMaster/RegistroMaestro.module.scss";
 import mew from "../../Styles/Images/mew.png";
 import oak from "../../Styles/Images/oak.png";
+import { motion } from 'framer-motion';
 
 //DECLARACIONES INICIALES
 let imagen;
@@ -95,16 +96,25 @@ const RegistroMaestro = () => {
 
     return (
         <div className={styles.registerMaster_container}>
-            <div className={styles.registerMaster_back}>
+            <motion.div
+                initial={{ x: -500, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className={styles.registerMaster_back}>
                 <button onClick={() => backPage()}>
                     <i className="fa-solid fa-backward"></i>
                     Volver a la pagina anterior
                 </button>
                 <img src={mew} alt="mewtwo" />
-            </div>
+            </motion.div>
 
             <div className={styles.registerMaster_form}>
-                <img src={oak} alt="oak" />
+                <motion.img
+                    initial={{ x: -500, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    src={oak}
+                    alt="oak" />
                 <Formik
                     id="formReset"
                     initialValues={{
@@ -138,75 +148,80 @@ const RegistroMaestro = () => {
                     }}
                 >
                     {({ errors, touched }) => (
-                        <Form className={styles.registerMaster_fields}>
-                            <h1>Registrate como maestro pokemon</h1>
+                        <Form >
+                            <motion.div
+                                initial={{ x: 500, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 1 }} className={styles.registerMaster_fields}>
+                                <h1>Registrate como maestro pokemon</h1>
 
-                            <label>Nombre</label>
-                            <Field name="nombre" />
-                            {errors.nombre && touched.nombre ? (
-                                <div className={styles.registerMaster_error}>
-                                    {errors.nombre}
-                                </div>
-                            ) : null}
+                                <label>Nombre</label>
+                                <Field name="nombre" />
+                                {errors.nombre && touched.nombre ? (
+                                    <div className={styles.registerMaster_error}>
+                                        {errors.nombre}
+                                    </div>
+                                ) : null}
 
-                            <label>Edad</label>
-                            <Field name="edad" type="number" />
-                            {errors.edad && touched.edad ? (
-                                <div className={styles.registerMaster_error}>
-                                    {errors.edad}
-                                </div>
-                            ) : null}
+                                <label>Edad</label>
+                                <Field name="edad" type="number" />
+                                {errors.edad && touched.edad ? (
+                                    <div className={styles.registerMaster_error}>
+                                        {errors.edad}
+                                    </div>
+                                ) : null}
 
-                            <label># de pokemons en tu pokedex</label>
-                            <Field name="pokemons" type="number" />
-                            {errors.pokemons && touched.marca ? (
-                                <div className={styles.registerMaster_error}>
-                                    {errors.marca}
-                                </div>
-                            ) : null}
+                                <label># de pokemons en tu pokedex</label>
+                                <Field name="pokemons" type="number" />
+                                {errors.pokemons && touched.marca ? (
+                                    <div className={styles.registerMaster_error}>
+                                        {errors.marca}
+                                    </div>
+                                ) : null}
 
-                            <label>Pokemon más valioso</label>
-                            <Field name="mvp" type="text" />
-                            {errors.mvp && touched.mvp ? (
-                                <div className={styles.registerMaster_error}>
-                                    {errors.mvp}
-                                </div>
-                            ) : null}
+                                <label>Pokemon más valioso</label>
+                                <Field name="mvp" type="text" />
+                                {errors.mvp && touched.mvp ? (
+                                    <div className={styles.registerMaster_error}>
+                                        {errors.mvp}
+                                    </div>
+                                ) : null}
 
-                            <label># de victorias</label>
-                            <Field name="victorias" type="number" />
-                            {errors.color && touched.color ? (
-                                <div className={styles.registerMaster_error}>
-                                    {errors.color}
-                                </div>
-                            ) : null}
+                                <label># de victorias</label>
+                                <Field name="victorias" type="number" />
+                                {errors.color && touched.color ? (
+                                    <div className={styles.registerMaster_error}>
+                                        {errors.color}
+                                    </div>
+                                ) : null}
 
-                            <label># de derrotas</label>
-                            <Field name="derrotas" type="number" />
-                            {errors.estado && touched.estado ? (
-                                <div className={styles.registerMaster_error}>
-                                    {errors.estado}
-                                </div>
-                            ) : null}
+                                <label># de derrotas</label>
+                                <Field name="derrotas" type="number" />
+                                {errors.estado && touched.estado ? (
+                                    <div className={styles.registerMaster_error}>
+                                        {errors.estado}
+                                    </div>
+                                ) : null}
 
 
-                            <Field
-                                style={{ display: "none" }}
-                                id="imageReset"
-                                name="imagen"
-                                type="file"
-                                onChange={imagenHandler} />
-                            <label
-                                className={styles.registerMaster_loadImage}
-                                htmlFor='imageReset'>
-                                <i className="fa-solid fa-upload"></i>
-                                Cargar imagen
-                            </label>
+                                <Field
+                                    style={{ display: "none" }}
+                                    id="imageReset"
+                                    name="imagen"
+                                    type="file"
+                                    onChange={imagenHandler} />
+                                <label
+                                    className={styles.registerMaster_loadImage}
+                                    htmlFor='imageReset'>
+                                    <i className="fa-solid fa-upload"></i>
+                                    Cargar imagen
+                                </label>
 
-                            <button
-                                type="submit">
-                                Agregar maestro pokemon
-                            </button>
+                                <button
+                                    type="submit">
+                                    Agregar maestro pokemon
+                                </button>
+                            </motion.div>
                         </Form>
                     )}
                 </Formik>

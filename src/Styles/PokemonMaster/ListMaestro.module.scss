@@ -12,6 +12,12 @@
         justify-content: space-between;
         align-items: center;
 
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            height: 18vh;
+        }
+
         a {
             color: rgb(8, 9, 52);
             font-size: 16px;
@@ -41,16 +47,23 @@
             color: rgb(8, 9, 52);
             cursor: pointer;
 
+            @media (max-width: 768px) {
+                margin-left: 0;
+                justify-content: center;
+            }
+
             i {
                 font-size: 16px;
                 margin-right: 16px;
             }
+
+            img {
+                height: 50px;
+                margin-left: 16px;
+            }
         }
 
-        img {
-            height: 50px;
-            margin-left: 16px;
-        }
+
     }
 
     .listMaster_card__container {
@@ -89,14 +102,14 @@
 
             .listMaster_text {
                 width: 85%;
+
                 h1 {
                     color: rgb(8, 9, 52);
                     margin-top: 8px;
                     font-size: 20px;
                     font-weight: bold;
                     text-transform: capitalize;
-                    text-align: center
-                    ;
+                    text-align: center;
                 }
 
                 h2 {
@@ -104,7 +117,8 @@
                     color: rgb(175, 175, 175);
                     display: flex;
                     justify-content: space-between;
-                    span{
+
+                    span {
                         color: rgb(8, 9, 52);
                     }
                 }
@@ -115,8 +129,8 @@
                 width: 100%;
                 display: flex;
                 justify-content: space-around;
-                
-                button{
+
+                button {
                     height: 40px;
                     margin-bottom: 10px;
                     width: 100px;
@@ -146,7 +160,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: rgb(8, 9, 52);
+        color: rgb(52, 8, 8);
         height: 80vh;
         text-align: center;
 
@@ -155,5 +169,84 @@
             width: 200px;
             margin-bottom: 16px;
         }
+    }
+}
+
+
+//ESTILOS DEL COMPONENTE PARA EDITAR
+.edit_container {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(8, 9, 52);
+        margin-bottom: 2px;
+    }
+
+    input {
+        border: 1px solid rgb(8, 9, 52);
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        height: 35px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: rgb(8, 9, 52);
+    }
+
+    img {
+        height: 130px;
+        width: 120px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    button {
+        height: 35px;
+        border-radius: 5px;
+        background-color: rgb(8, 9, 52);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: 0.3s all ease-in-out;
+
+        &:hover {
+            transform: scale(1.02);
+            background-color: transparent;
+            color: rgb(8, 9, 52) !important;
+            border: 2px solid rgb(8, 9, 52);
+        }
+
+    }
+}
+
+//ESTILOS DEL LABEL PARA CARGAR LA IMAGEN
+.label_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    height: 35px;
+    background-color: rgb(8, 9, 52);
+    border: none;
+    border-radius: 5px;
+    color: white !important;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        transform: scale(1.02);
+        background-color: transparent;
+        color: rgb(8, 9, 52) !important;
+        border: 2px solid rgb(8, 9, 52);
+    }
+
+    i {
+        font-size: 16px;
+        margin-right: 10px;
+        font-weight: bold;
     }
 }

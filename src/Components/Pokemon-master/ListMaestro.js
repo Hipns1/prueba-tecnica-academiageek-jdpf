@@ -41,24 +41,36 @@ const ListMaestro = () => {
 
     return (
         <div className={styles.listMaster_container}>
-            <div className={styles.listMaster_back}>
+            <motion.div
+                initial={{ x: -500, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className={styles.listMaster_back}>
                 <div>
                     <button onClick={() => backPage()}>
                         <i className="fa-solid fa-backward"></i>
                         Volver a la pagina anterior
+                        <img src={mew} alt="mewtwo" />
                     </button>
-                    <img src={mew} alt="mewtwo" />
+
                 </div>
                 <Link to="/registrar-maestro-pokemon">
                     <i className="fa-solid fa-plus"></i>
                     Registrar masestro pokemon
                 </Link>
-            </div>
+            </motion.div>
 
-            <div className={styles.listMaster_card__container}>
+            <motion.div
+                initial={{ x: 800, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className={styles.listMaster_card__container}>
                 {maestro.length > 0
                     ? maestro?.map((maestro, index) => (
-                        <div key={index} className={styles.listMaster_card}>
+                        <div
+
+                            key={index}
+                            className={styles.listMaster_card}>
                             <div className={styles.listMaster_image}>
                                 <img src={maestro.imagen} alt="imagen" />
                             </div>
@@ -73,13 +85,13 @@ const ListMaestro = () => {
 
                             <div className={styles.listMaster_btns}>
                                 <button onClick={() => editMaestro(maestro)}>Editar</button>
-                                <button onClick={() => deleteMaestro(maestro.masterId)}>Eliminar</button>
+                                <button style={{backgroundColor: "#b60e0e"}}onClick={() => deleteMaestro(maestro.masterId)}>Eliminar</button>
                             </div>
                         </div>
                     ))
                     : <motion.div
-                        initial={{ y: -500, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{ duration: 1 }}
                         className={styles.listMaster_vacio}>
                         <h1>
@@ -90,7 +102,7 @@ const ListMaestro = () => {
                         </h1>
                     </motion.div>
                 }
-            </div>
+            </motion.div>
             <div style={{ width: "100%" }}>
                 {modalEditar ? <EditMaestro maestro={maestroEditar} set={setModalEditar} /> : null}
             </div>
