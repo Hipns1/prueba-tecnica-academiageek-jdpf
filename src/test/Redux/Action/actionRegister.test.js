@@ -9,9 +9,9 @@ describe("Acciones de Register sincrono", () => {
         const pass = "123456";
         const name = "Jesus";
 
-        const loginAction = registerSync(email, pass, name);
+        const registerAction = registerSync(email, pass, name);
 
-        expect( loginAction ).toEqual({
+        expect( registerAction ).toEqual({
             type: typesRegister.register,
             payload: {
                 email,
