@@ -2,59 +2,48 @@
 
 _En esta prueba desarrollamos una pokedex, es decir, una app para consultar los distintos tipos de pokemon, poder filtrarlos por nombre exacto y nombre aproximado; ademas de incluir un registro de maestros pokemons, en el cual tu tambien puedes ser parte. Puedes registrarte en nuestra pokedex con correo/email, o haciendo uso de tus redes sociales como Facebook y Google._
 
-## Comenzando 🚀
+## Setup 🚀
 
 _Necesitas tener instalado [Node.js](https://nodejs.org/en/) en tu computadora_
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+1. Clona el repositorio. Puedes usar el siguiente enlace: (https://github.com/Hipns1/prueba-tecnica-academiageek-jdpf.git).
+2. Ingresa el comando `$ npm install` para instalar todas las dependencias del proyecto.
 
+### Corriendo el proyecto 📋
 
-### Pre-requisitos 📋
+1. Ingresa el comando `npm start` para correr el proyecto.
+2. Visita `http://localhost:3000` para visualizarlo.
+3. Vive la experiencia de tener tu propia pokedex.
+### Build 🔧
 
-_Necesitas tener instalado_
-
-```
-Da un ejemplo
-```
-
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
+_Corre el comando `npm run build` para generar una build de producción que quedara guardada en la carpeta /build que se encuentra en la raiz del proyecto_
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+_Para correr las pruebas automatizadas de este proyecto, utiliza el comando `npm run test`, y luego presiona la tecla **a** para correr todos los test._
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+_Puedes ver el despliegue de esta pagina en: [Pokedex - JDPF](https://pokedex-562f3.web.app/)_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Las herramientas que usé para construir esta pagina son las siguientes:_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-
+* [React.js](http://www.dropwizard.io/1.0.2/docs/) - Libreria de JS usada
+* [Firebase](https://firebase.google.com/docs/web/setup) - Usado para la base de datos
+* [Sass](https://sass-lang.com/) - Preprocesador de CSS usado
+* [Framer-Motion](https://framer.com/motion/) - Animaciones
+* [Chart.js](https://www.chartjs.org/) - Libreria de graficos
+* [Axios](https://axios-http.com/es/) - Cliente HTTP
+* [React-Router](https://reacttraining.com/react-router/) - Manejador de rutas
+* [React-Redux](https://redux.js.org/) - Manejador de estados
+* [Gravatar](https://gravatar.com/) - Servicio de avatar
+* [Cloudinary](https://cloudinary.com/) - Servicio de imagenes
+* [Formik](https://formik.org/) - Manejador de formularios
+* [Yup](https://www.npmjs.com/package/yup) - Manejador de validaciones en los formularios
 ## Autor ✒️
 
 * **Jesús David Pérez Ferrer** - [Hipns1](https://github.com/Hipns1)
----
-
 ⌨️ con ❤️ por [Hipns1](https://github.com/Hipns1) 😊
+
+
