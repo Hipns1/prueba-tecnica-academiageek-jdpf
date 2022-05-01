@@ -4,6 +4,7 @@ import styles from "../Styles/PokeCard/PokeCard.module.scss";
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getEvolution } from '../utils/getEvolve';
+import Swal from 'sweetalert2';
 
 const PokeCards = () => {
 
@@ -70,11 +71,14 @@ const PokeCards = () => {
             const url_search = `https://pokeapi.co/api/v2/pokemon/${search}`;
             axios.get(url_search)
                 .then(resp => {
-                    console.log(resp)
                     setPokeArray([resp.data])
                 })
                 .catch(err => {
-                    console.log(err)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Este pokemon no existe',
+                        text: 'Intenta con el nombre exacto o uno que exista'
+                    })
                 })
         }
     }
@@ -127,7 +131,7 @@ const PokeCards = () => {
                                     transition={{ duration: 4 }}
                                     onClick={() => getEvolution(pokemon)}>
                                     <i className="fa-solid fa-computer-mouse"></i>
-                                    &nbsp;<span>Este pokemon evolucionó de...</span>
+                                    &nbsp;<span>Click para revelar evolución...</span>
                                 </motion.button>
                             </div>
                         )

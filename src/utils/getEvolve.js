@@ -1,5 +1,5 @@
-import axios from "axios"
-import Swal from "sweetalert2"
+import axios from "axios";
+import Swal from "sweetalert2";
 
 //FUNCION PARA OBTENER LA EVOLUCION ANTERIOR DEL POKEMON
 export const getEvolution = (pokemon) => {
@@ -11,7 +11,7 @@ export const getEvolution = (pokemon) => {
                         Swal.fire({
                             icon: 'success',
                             text: 'Este pokemon ha evolucinado de...',
-                            title: `${result.data.name}`,
+                            title: `${(result.data.name).toUpperCase()}`,
                         })
                     })
             } else {

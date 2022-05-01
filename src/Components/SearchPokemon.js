@@ -90,7 +90,7 @@ const SearchPokemon = () => {
                                     transition={{ duration: 4 }}
                                     onClick={() => getEvolution(pokemon)}>
                                     <i className="fa-solid fa-computer-mouse"></i>
-                                    &nbsp;<span>Este pokemon evolucionó de...</span>
+                                    &nbsp;<span>Click para revelar evolución...</span>
                                 </motion.button>
                             </div>
                         )
