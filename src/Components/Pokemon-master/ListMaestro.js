@@ -79,7 +79,7 @@ const ListMaestro = () => {
                                 <h2>Edad: <span>{maestro.edad}</span></h2>
                                 <h2># de pokemons: <span>{maestro.pokemons}</span></h2>
                                 <h2>Pokemon mas valioso: <span>{maestro.mvp}</span></h2>
-                                <h2>Victorioas: <span>{maestro.victorias}</span></h2>
+                                <h2>Victorias: <span>{maestro.victorias}</span></h2>
                                 <h2>Derrotas: <span>{maestro.derrotas}</span></h2>
                             </div>
 
