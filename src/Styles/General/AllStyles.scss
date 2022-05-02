@@ -19,7 +19,14 @@
         width: 100%;
     }
 }
-
+.modal-dialog{
+    max-width: 60% !important;
+    @media (max-width: 800px) {
+        max-width: 95% !important;
+    
+        
+    }
+}
 
 //estilos para la pagina de inicio
 //color dependiendo del tipo de pokemon

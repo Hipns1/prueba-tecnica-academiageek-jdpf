@@ -8,15 +8,24 @@ import poke from "../Styles/Images/pokeball.png";
 import pokeGold from "../Styles/Images/pokeGold.png";
 import RadarChartStats from './RadarChartStats';
 import { motion } from 'framer-motion';
+import ModalMoves from './ModalMoves';
 
 const DetailsPokemon = () => {
 
     const [detail, setDetail] = useState([]);
+    const [moves, setMoves] = useState([]);
+    const [showMoves, setShowMoves] = useState(false)
     const navigate = useNavigate();
 
     //VOLVER A LA PAGINA PRINCIPAL
     const backPage = () => {
         navigate("/home");
+    }
+
+    //MOSTRAR TODOS LOS MOVIMIENTOS EN UN MODAL 
+    const handleMoves = (moves) => {
+        setMoves(moves);
+        setShowMoves(true);
     }
 
     useEffect(() => {
@@ -28,7 +37,7 @@ const DetailsPokemon = () => {
         <motion.div
             initial={{ x: -1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }} 
+            transition={{ duration: 1 }}
             className={styles.detail_container}>
 
             <div className={styles.detail_back}>
@@ -103,36 +112,45 @@ const DetailsPokemon = () => {
                                         {pokemon.abilities[0].ability.name}
                                     </p>
                                     <p>
-                                        <img src={pokeGold} alt="pokegold"/>
+                                        <img src={pokeGold} alt="pokegold" />
                                         {pokemon.abilities[1] ? pokemon.abilities[1].ability.name : null}
                                     </p>
                                 </div>
 
                                 {/* mostrar movimientos */}
                                 <div className={styles.details_moves}>
-                                    <h1>Movimientos:</h1>
+                                    <h1>Principales movimientos:</h1>
+
                                     <p>
-                                        <img src={poke} alt="poke"/>
+                                        <img src={poke} alt="poke" />
                                         {pokemon.moves[0].move.name}
                                     </p>
                                     <p>
-                                        <img src={poke} alt="poke"/>
+                                        <img src={poke} alt="poke" />
                                         {pokemon.moves[1] ? pokemon.moves[1].move.name : null}
                                     </p>
                                     <p>
-                                        <img src={poke} alt="poke"/>
+                                        <img src={poke} alt="poke" />
                                         {pokemon.moves[2] ? pokemon.moves[2].move.name : null}
                                     </p>
                                     <p>
-                                        <img src={poke} alt="poke"/>
+                                        <img src={poke} alt="poke" />
                                         {pokemon.moves[3] ? pokemon.moves[3].move.name : null}
                                     </p>
+                                    <button onClick={() => handleMoves(pokemon.moves)}>
+                                        <i className="fa-solid fa-computer-mouse"></i>
+                                        Mostrar todos los movimientos...
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     )
                 })
             }
+            <div style={{ width: "100%" }}>
+
+                {showMoves ? <ModalMoves moves={moves} set={setShowMoves} /> : null}
+            </div>
         </motion.div>
     )
 }
