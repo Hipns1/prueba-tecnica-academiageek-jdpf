@@ -56,7 +56,7 @@ const SideMenu = () => {
 
                     <Link to="/maestro-pokemon">
                         <i className="fa-solid fa-address-book"></i>
-                        <span>Resgistro maestro pokemon</span>
+                        <span>Registro maestro pokemon</span>
                     </Link>
 
 
