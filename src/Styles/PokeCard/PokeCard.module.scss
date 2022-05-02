@@ -26,6 +26,9 @@
             @media (max-width: 500px) {
                 width: 200px;
             }
+            @media (max-width: 425px) {
+                width: 150px;
+            }
         }
 
         button {
@@ -55,6 +58,10 @@
         padding: 0 20px;
         justify-content: space-around;
 
+        @media (max-width: 425px) {
+            padding: 0;
+        }
+
         .pokecard_card {
             border-radius: 8px;
             width: 230px;
@@ -71,6 +78,10 @@
             -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.60);
             box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.60);
             transition: 0.3s all ease-in-out;
+
+            @media (max-width: 425px) {
+                margin: 20px 0px;
+            }
 
             &:hover {
                 transform: scale(1.02);
