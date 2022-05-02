@@ -1,4 +1,4 @@
-# PRUEBA TECNICA ACADEMIA GEEK - JESUS DAVID PEREZ FERRER
+# TECHNICAL TEST (ACADEMIA GEEK) - JESUS DAVID PEREZ FERRER
 
 _In this test we develop a pokedex, that is, an app to consult the different types of pokemon, to be able to filter them by exact name and approximate name; In addition to including a registry of pokemon masters, in which you can also be a part. You can register in our pokedex with mail / email, or using your social networks such as Facebook and Google._
 
